@@ -1,23 +1,46 @@
-PredictionIO Engine Heroku
---------------------------
+DreamHouse PredictionIO Recommendation Engine
+---------------------------------------------
+
+This app uses PredictionIO to provide property recommendations based on users' favorites.
+
+Run on Heroku:
+
+1. [Sign up for a free Heroku account](https://heroku.com/signup)
+1. [Install the Heroku Toolbelt](https://toolbelt.heroku.com)
+1. Deploy the PredictionIO Event Server on Heroku: [![Deploy on Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/jamesward/pio-eventserver-heroku)
+1. Create a new app in the PredictionIO Event Server:
+
+        heroku run console app new dreamhouse -a <YOUR EVENT SERVER APP NAME>
+
+1. Deploy the DreamHouse Web App: [![Deploy on Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/dreamhouseapp/dreamhouse-web-app#pio)
+1. Deploy the recommendation engine: [![Deploy on Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+1. Attach your PredictionIO Event Server's Postgres to the recommendation engine app:
+
+    Lookup the Heroku Postgres Addon ID for the Event Server's Postgres:
+    
+        heroku addons -a <YOUR EVENT SERVER HEROKU APP NAME>
+    
+    Attach the Postgres Addon to the Engine:
+    
+        heroku addons:attach <YOUR ADDON ID> -a <YOUR ENGINE APP NAME>
+
+1. Train the engine and restart it:
+
+        heroku restart -a <YOUR ENGINE APP NAME>
+
+1. Configure the DreamHouse Web App to know where to pull recommendations from:
+
+        heroku config:set PIO_ENGINE_SERVER_NAME=<SERVER NAME FOR YOUR RECOMMENDATION SERVER NAME> -a <YOUR DREAMHOUSE WEB APP NAME>
+
+1. Check out the recommendation in the DreamHouse Web App
+
 
 Run Locally:
 
 1. Start Postgres
-1. Set your PredictionIO app's access key and app name in your env vars:
+1. Train the app and run the server:
 
-        export ACCESS_KEY=<YOUR ACCESS KEY>
-        export APP_NAME=<YOUR APP NAME>
-
-    Note: These values come from the apps defined in your event server.
-
-1. Train the app:
-
-        source bin/env.sh && ./sbt "runMain TrainApp"
-
-1. Start the server:
-
-        source bin/env.sh && ./sbt "runMain ServerApp"
+        source bin/env.sh && DREAMHOUSE_WEB_APP_URL=http://localhost:8200 ACCESS_KEY=<YOUR ACCESS KEY> ./sbt "runMain ServerApp"
 
 1. Check the status of your engine:
 
@@ -25,28 +48,4 @@ Run Locally:
 
 1. Check out the recommendations for an item:
 
-    > Note: Must be an item that has events
-
-        curl -H "Content-Type: application/json" -d '{ "items": ["i11"], "num": 4 }' -k http://localhost:8000/queries.json
-
-
-Run on Heroku:
-
-1. Deploy: [![Deploy on Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-1. Attach your PredictionIO Event Server's Postgres:
-
-        heroku addons:attach YOUR-ADDON-ID
-
-    Note: You can find out `<YOUR-ADDON-ID>` by running: `heroku addons -a <YOUR EVENT SERVER HEROKU APP NAME>`
-
-1. Configure the Heroku app:
-
-        heroku config:set ACCESS_KEY=<YOUR APP ACCESS KEY> APP_NAME=<APP NAME> EVENT_SERVER_IP=<YOUR EVENT SERVER HOSTNAME> EVENT_SERVER_PORT=80
-
-1. Train the app:
-
-        heroku run train
-
-1. Restart the app to load the new training data:
-
-        heroku restart
+    curl -H "Content-Type: application/json" -d '{"contactId": "c1", "numResults": 3 }' -k http://localhost:8000/queries.json

@@ -1,4 +1,4 @@
-name := "pio-engine-heroku"
+name := "dreamhouse-pio"
 
 parallelExecution in Test := false
 

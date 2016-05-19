@@ -8,6 +8,8 @@ import spray.can.server.ServerSettings
 
 object ServerApp extends App {
 
+  TrainApp.train()
+
   val port = sys.env.getOrElse("PORT", "8000").toInt
   val eventServerIp = sys.env.getOrElse("EVENT_SERVER_IP", "localhost")
   val eventServerPort = sys.env.getOrElse("EVENT_SERVER_PORT", "7070").toInt
