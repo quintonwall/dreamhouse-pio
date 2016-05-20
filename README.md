@@ -13,7 +13,7 @@ Run on Heroku:
         heroku run console app new dreamhouse -a <YOUR EVENT SERVER APP NAME>
 
 1. Deploy the DreamHouse Web App: [![Deploy on Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/dreamhouseapp/dreamhouse-web-app/tree/pio)
-1. Deploy the recommendation engine: [![Deploy on Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+1. Deploy the recommendation engine: [![Deploy on Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/dreamhouseapp/dreamhouse-pio)
 1. Attach your PredictionIO Event Server's Postgres to the recommendation engine app:
 
     Lookup the Heroku Postgres Addon ID for the Event Server's Postgres:
