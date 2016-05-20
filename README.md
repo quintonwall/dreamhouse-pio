@@ -48,4 +48,4 @@ Run Locally:
 
 1. Check out the recommendations for an item:
 
-    curl -H "Content-Type: application/json" -d '{"userId": "c1", "numResults": 3 }' -k http://localhost:8000/queries.json
+        curl -H "Content-Type: application/json" -d '{"userId": "c1", "numResults": 3 }' -k http://localhost:8000/queries.json
