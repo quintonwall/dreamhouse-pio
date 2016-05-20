@@ -30,7 +30,7 @@ Run on Heroku:
 
 1. Configure the DreamHouse Web App to know where to pull recommendations from:
 
-        heroku config:set PIO_ENGINE_SERVER_NAME=<SERVER NAME FOR YOUR RECOMMENDATION SERVER NAME> -a <YOUR DREAMHOUSE WEB APP NAME>
+        heroku config:set PIO_ENGINE_URL=<URL FOR YOUR RECOMMENDATION SERVER> -a <YOUR DREAMHOUSE WEB APP NAME>
 
 1. Check out the recommendation in the DreamHouse Web App
 
