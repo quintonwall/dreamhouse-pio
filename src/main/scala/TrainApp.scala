@@ -6,7 +6,7 @@ import io.prediction.workflow.CreateWorkflow.WorkflowConfig
 import io.prediction.workflow._
 import org.joda.time.DateTime
 
-object TrainApp {
+object TrainApp extends App {
 
   def train() = {
     // WTF: envs must not be empty or CreateServer.engineInstances.get... fails due to JDBCUtils.stringToMap
@@ -81,5 +81,9 @@ object TrainApp {
     )
 
   }
+
+  train()
+
+  CreateServer.actorSystem.shutdown()
 
 }

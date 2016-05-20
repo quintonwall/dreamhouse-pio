@@ -30,8 +30,8 @@ class DataSource(val dataSourceParams: DataSourceParams) extends PDataSource[Tra
       JArray(favorites) <- json
       JObject(favorite) <- favorites
       JField("sfid", JString(propertyId)) <- favorite
-      JField("favorite__c_contact", JString(contactId)) <- favorite
-    } yield Favorite(propertyId, contactId)
+      JField("favorite__c_user__c", JString(userId)) <- favorite
+    } yield Favorite(propertyId, userId)
 
     val rdd = sc.parallelize(favorites)
 
@@ -39,6 +39,6 @@ class DataSource(val dataSourceParams: DataSourceParams) extends PDataSource[Tra
   }
 }
 
-case class Favorite(propertyId: String, contactId: String)
+case class Favorite(propertyId: String, userId: String)
 
 case class TrainingData(favorites: RDD[Favorite])

@@ -40,11 +40,11 @@ class Algorithm(val params: AlgorithmParams) extends PAlgorithm[PreparedData, Mo
 
   def train(sc: SparkContext, data: PreparedData): Model = {
 
-    val userStringIntMap = BiMap.stringInt(data.favorites.map(_.contactId))
+    val userStringIntMap = BiMap.stringInt(data.favorites.map(_.userId))
     val itemStringIntMap = BiMap.stringInt(data.favorites.map(_.propertyId))
 
     val ratings = data.favorites.map { favorite =>
-      Rating(userStringIntMap(favorite.contactId), itemStringIntMap(favorite.propertyId), 1)
+      Rating(userStringIntMap(favorite.userId), itemStringIntMap(favorite.propertyId), 1)
     }.cache()
 
     val model = ALS.train(ratings, params.rank, params.numIterations, params.lambda)
