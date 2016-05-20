@@ -1,1 +1,1 @@
-web: source bin/env.sh && target/universal/stage/bin/pio-engine-heroku -main ServerApp
+web: source bin/env.sh && target/universal/stage/bin/dreamhouse-pio -main ServerApp

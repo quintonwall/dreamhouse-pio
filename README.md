@@ -24,10 +24,6 @@ Run on Heroku:
     
         heroku addons:attach <YOUR ADDON ID> -a <YOUR ENGINE APP NAME>
 
-1. Train the engine and restart it:
-
-        heroku restart -a <YOUR ENGINE APP NAME>
-
 1. Configure the DreamHouse Web App to know where to pull recommendations from:
 
         heroku config:set PIO_ENGINE_URL=<URL FOR YOUR RECOMMENDATION SERVER> -a <YOUR DREAMHOUSE WEB APP NAME>
