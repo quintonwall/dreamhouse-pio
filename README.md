@@ -16,10 +16,14 @@ Run on Heroku:
 1. Deploy the recommendation engine: [![Deploy on Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/dreamhouseapp/dreamhouse-pio)
 1. Attach your PredictionIO Event Server's Postgres to the recommendation engine app:
 
+    Remove the auto-added Heroku Postgres addon:
+
+        heroku addons:destroy heroku-postgresql -a <YOUR ENGINE APP NAME>
+
     Lookup the Heroku Postgres Addon ID for the Event Server's Postgres:
     
         heroku addons -a <YOUR EVENT SERVER HEROKU APP NAME>
-    
+
     Attach the Postgres Addon to the Engine:
     
         heroku addons:attach <YOUR ADDON ID> -a <YOUR ENGINE APP NAME>
