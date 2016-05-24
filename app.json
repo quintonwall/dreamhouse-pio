@@ -18,6 +18,10 @@
     },
     "EVENT_SERVER_PORT": {
       "description": "PredictionIO Event Server Port"
+    },
+    "JAVA_OPTS": {
+      "description": "Java runtime settings",
+      "value": "-Xss4m"
     }
   }
 }
