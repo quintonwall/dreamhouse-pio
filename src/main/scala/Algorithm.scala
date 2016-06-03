@@ -28,7 +28,7 @@ object Model extends PersistentModelLoader[AlgorithmParams, Model] {
     val theSparkContext = sc.get
     val productFeatures = theSparkContext.objectFile[(Int, Array[Double])](params.productFeaturesTmpFile.getAbsolutePath).cache()
     val userFeatures = theSparkContext.objectFile[(Int, Array[Double])](params.userFeaturesTmpFile.getAbsolutePath).cache()
-    val model = new MatrixFactorizationModel(params.rank, productFeatures, userFeatures)
+    val model = new MatrixFactorizationModel(params.rank, userFeatures, productFeatures)
     val userStringIntMap = theSparkContext.objectFile[BiMap[String, Int]](params.userStringIntMapTmpFile.getAbsolutePath).first
     val itemStringIntMap = theSparkContext.objectFile[BiMap[String, Int]](params.itemStringIntMapTmpFile.getAbsolutePath).first
     Model(model, userStringIntMap, itemStringIntMap)
