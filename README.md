@@ -12,7 +12,7 @@ Run on Heroku:
 
         heroku run console app new dreamhouse -a <YOUR EVENT SERVER APP NAME>
 
-1. Deploy the DreamHouse Web App: [![Deploy on Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/dreamhouseapp/dreamhouse-web-app/tree/pio)
+1. Deploy the DreamHouse Web App (pio branch): [![Deploy on Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/dreamhouseapp/dreamhouse-web-app/tree/pio)
 1. Deploy the recommendation engine: [![Deploy on Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/dreamhouseapp/dreamhouse-pio)
 1. Attach your PredictionIO Event Server's Postgres to the recommendation engine app:
 
@@ -37,9 +37,12 @@ Run on Heroku:
 
 Run Locally:
 
-1. Start Postgres
-1. Train the app and run the server:
+1. Setup a local PredictionIO Event Server: https://github.com/jamesward/pio-eventserver-heroku
+1. Setup a local DreamHouse Web App using the `pio` branch: https://github.com/dreamhouseapp/dreamhouse-web-app/tree/pio
+1. Setup a local PredictionIO Recommendation Engine: https://github.com/dreamhouseapp/dreamhouse-pio
+1. Train the app and run the recommendation engine:
 
+        cd dreamhouse-pio
         source bin/env.sh && DREAMHOUSE_WEB_APP_URL=http://localhost:8200 ACCESS_KEY=<YOUR ACCESS KEY> ./sbt "runMain ServerApp"
 
 1. Check the status of your engine:
