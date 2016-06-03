@@ -3,6 +3,10 @@ DreamHouse PredictionIO Recommendation Engine
 
 This app uses PredictionIO to provide property recommendations based on users' favorites.
 
+Check out a demo:
+
+[![Demo](http://img.youtube.com/vi/w4060vJhxig/0.jpg)](http://www.youtube.com/watch?v=w4060vJhxig)
+
 Run on Heroku:
 
 1. [Sign up for a free Heroku account](https://heroku.com/signup)
