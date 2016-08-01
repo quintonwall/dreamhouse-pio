@@ -32,7 +32,7 @@ Run on Heroku:
     
         heroku addons:attach <YOUR ADDON ID> -a <YOUR ENGINE APP NAME>
 
-1. Configure the DreamHouse Web App to know where to pull recommendations from:
+1. Configure the DreamHouse Web App to know where to pull recommendations from by setting the `PIO_ENGINE_URL` to the base URL of your PIO Engine app (e.g. `https://foo.herokuapp.com`):
 
         heroku config:set PIO_ENGINE_URL=<URL FOR YOUR RECOMMENDATION SERVER> -a <YOUR DREAMHOUSE WEB APP NAME>
 
