@@ -36,7 +36,10 @@ object TrainApp extends App {
 
     WorkflowUtils.modifyLogging(workflowConfig.verbose)
 
-    val dataSourceParams = DataSourceParams(sys.env.get("DREAMHOUSE_WEB_APP_URL").get)
+    val salesforceUsername = sys.env.get("SALESFORCE_USERNAME").getOrElse(throw new Exception("The SALESFORCE_USERNAME env var is required"))
+    val salesforcePassword = sys.env.get("SALESFORCE_PASSWORD").getOrElse(throw new Exception("The SALESFORCE_PASSWORD env var is required"))
+
+    val dataSourceParams = DataSourceParams(salesforceUsername, salesforcePassword)
     val preparatorParams = EmptyParams()
     val algorithmParamsList = Seq("als" -> AlgorithmParams(rank = 10, numIterations = 10, lambda = 0.01, tmpDir = Files.createTempDirectory("model").toFile.getAbsolutePath))
     val servingParams = EmptyParams()

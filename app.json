@@ -10,9 +10,6 @@
     "ACCESS_KEY": {
       "description": "PredictionIO Event Server App Access Key"
     },
-    "DREAMHOUSE_WEB_APP_URL": {
-      "description": "The base URL of your DreamHouse Web App, e.g. https://foo.herokuapp.com"
-    },
     "EVENT_SERVER_IP": {
       "description": "PredictionIO Event Server Name"
     },

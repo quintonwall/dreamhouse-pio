@@ -1,9 +1,13 @@
+import java.nio.file.Files
+
 import org.scalatest.FlatSpec
 import org.scalatest.Matchers
 
 class AlgorithmTest extends FlatSpec with EngineTestSparkContext with Matchers {
 
-  val params = AlgorithmParams(10, 10, 0.01)
+  var tmpDir = Files.createTempDirectory("model").toFile.getAbsolutePath
+
+  val params = AlgorithmParams(10, 10, 0.01, tmpDir)
   val algorithm = new Algorithm(params)
 
   val favorites = Seq(
