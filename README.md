@@ -16,8 +16,10 @@ Run on Heroku:
 
         heroku run console app new dreamhouse -a <YOUR EVENT SERVER APP NAME>
 
-1. Deploy the DreamHouse Web App (pio branch): [![Deploy on Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/dreamhouseapp/dreamhouse-web-app/tree/pio)
-1. Deploy the recommendation engine: [![Deploy on Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/dreamhouseapp/dreamhouse-pio)
+1. Deploy the recommendation engine: [![Deploy on Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/quintonwall/dreamhouse-pio/tree/salesforce-rest)
+
+    Set SALESFORCE_USERNAME and SALESFORCE_PASSWORD env vars to the dreamhouse org where you are favorites are
+    
 1. Attach your PredictionIO Event Server's Postgres to the recommendation engine app:
 
     Remove the auto-added Heroku Postgres addon:
@@ -32,11 +34,6 @@ Run on Heroku:
     
         heroku addons:attach <YOUR ADDON ID> -a <YOUR ENGINE APP NAME>
 
-1. Configure the DreamHouse Web App to know where to pull recommendations from by setting the `PIO_ENGINE_URL` to the base URL of your PIO Engine app (e.g. `https://foo.herokuapp.com`):
-
-        heroku config:set PIO_ENGINE_URL=<URL FOR YOUR RECOMMENDATION SERVER> -a <YOUR DREAMHOUSE WEB APP NAME>
-
-1. Check out the recommendation in the DreamHouse Web App
 
 
 Run Locally:
