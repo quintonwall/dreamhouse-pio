@@ -1,7 +1,7 @@
 DreamHouse PredictionIO Recommendation Engine
 ---------------------------------------------
 
-This app uses PredictionIO to provide property recommendations based on users' favorites.
+This  app uses PredictionIO to provide property recommendations based on users' favorites.
 
 Check out a demo:
 
