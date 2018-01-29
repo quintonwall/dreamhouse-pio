@@ -1,6 +1,6 @@
 {
   "name": "dreamhouse-pio",
-  "description": "Dreamhouse Recommendation Engine built with PredictionIO",
+  "description": "DreamHouse Recommendation Engine built with PredictionIO",
   "keywords": [
     "machinelearning",
     "predictionio"
